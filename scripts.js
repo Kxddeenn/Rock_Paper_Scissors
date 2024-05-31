@@ -56,7 +56,7 @@ computerScore = 0;
 function playRound(humanChoice, computerChoice){
 
     if( humanChoice == computerChoice){
-        console.log("It's a tie");
+        console.log(`It's a tie! Both selected ${computerChoice}.`);
     }
 
     else if ( humanChoice == "scissors" && computerChoice == "rock" || humanChoice == "papper" && computerChoice == "scissors" || humanChoice == "rock" && computerChoice == "papper"){
