@@ -30,12 +30,6 @@ function getHumanChoice(){
     humanChoice = prompt("Please choose Papper, Scissors or Rock");
     humanChoice = humanChoice.toLowerCase();
 
-    if (humanChoice !== "papper" && humanChoice !== "rock" && humanChoice !== "papper"){
-    
-        humanChoice = prompt("Please choose Papper, Scissors or Rock");
-        
-    }
-
     return humanChoice;
 
 }
@@ -94,11 +88,27 @@ function playRound(humanChoice, computerChoice){
 
 }
 
-const humanSelection = getHumanChoice();
-const computerSelection = getComputerChoice();
-
-playRound(humanSelection, computerSelection);
-
-// Function that will call playRound 5 times
+// Function called playGame that will call playRound 5 times
 // All the variables will be called within the function
 // Play 5 rounds
+
+function playGame(){
+
+    const humanSelection = getHumanChoice();
+    const computerSelection = getComputerChoice();
+    playRound(humanSelection, computerSelection);
+
+}
+
+
+for (i = 0 ; i < 5 ; i++){
+playGame();
+}
+
+if (humanScore > computerScore){
+    console.log("You win!");
+}
+
+else {
+    console.log("You lose!");
+}
