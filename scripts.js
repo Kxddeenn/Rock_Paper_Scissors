@@ -59,38 +59,14 @@ function playRound(humanChoice, computerChoice){
         console.log("It's a tie");
     }
 
-    else if ( humanChoice == "scissors" && computerChoice == "rock"){
-        console.log("You lose! Rock beats Scissors");
-        computerScore++;
-        console.log("Human Score: ", humanScore, "Computer Score: " , computerScore);
-    }
-
-    else if ( humanChoice == "rock" && computerChoice == "scissors"){
-        console.log("You win! Rock beats Scissors");
-        humanScore++;
-        console.log("Human Score: ", humanScore, "Computer Score: " , computerScore);
-    }
-
-    else if ( humanChoice == "scissors" && computerChoice == "papper"){
-        console.log("You win! Scissors beats Papper");
-        humanScore++;
-        console.log("Human Score: ", humanScore, "Computer Score: " , computerScore);
-    }
-
-    else if ( humanChoice == "papper" && computerChoice == "scissors"){
-        console.log("You lose! Scissors beats Papper");
-        computerScore++;
-        console.log("Human Score: ", humanScore, "Computer Score: " , computerScore);
-    }
-
-    else if ( humanChoice == "rock" && computerChoice == "papper"){
-        console.log("You lose! Papper beats Rock");
+    else if ( humanChoice == "scissors" && computerChoice == "rock" || humanChoice == "papper" && computerChoice == "scissors" || humanChoice == "rock" && computerChoice == "papper"){
+        console.log(`You lose! ${computerChoice} beats ${humanChoice}`);
         computerScore++;
         console.log("Human Score: ", humanScore, "Computer Score: " , computerScore);
     }
 
     else {
-        console.log("You win! Papper beats Rock");
+        console.log(`You win! ${humanChoice} beats ${computerChoice}`);
         computerScore++;
         console.log("Human Score: ", humanScore, "Computer Score: " , computerScore);
     }
