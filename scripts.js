@@ -46,8 +46,8 @@ function getHumanChoice(){
 
 // Variables to keep track of score 
 
-humanScore = 0;
-computerScore = 0;
+let humanScore = 0;
+let computerScore = 0;
 
 // Function called playRound
 // Will take human and computer player choices as arguments, plays a single round, increments the round winner's score
@@ -94,8 +94,13 @@ if (humanScore > computerScore){
     console.log("You win!");
 }
 
-else {
+else if (humanScore < computerScore) {
     console.log("You lose!");
 }
+
+else {
+    console.log("The game is tied! Play again?")
+}
+
 
 
