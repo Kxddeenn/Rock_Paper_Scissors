@@ -3,7 +3,7 @@
 // Called getComputerChoice
 
 function getComputerChoice(){
-    randomNumber = Math.floor(Math.random() * 100);
+   let randomNumber = Math.floor(Math.random() * 100);
     
     if (randomNumber < 33.3){
         randomNumber = "rock";
@@ -27,8 +27,17 @@ function getComputerChoice(){
 
 function getHumanChoice(){
 
-    humanChoice = prompt("Please choose Papper, Scissors or Rock");
+ let humanChoice = prompt("Please choose Papper, Scissors or Rock");
     humanChoice = humanChoice.toLowerCase();
+
+    while (1){
+        if (humanChoice !== "rock" && humanChoice !== "papper" && humanChoice !== "scissors"){
+            humanChoice = prompt("Invalid Choice. Enter your pick");
+        }
+        else {
+            break;
+        }
+    }
 
     return humanChoice;
 
@@ -112,3 +121,5 @@ if (humanScore > computerScore){
 else {
     console.log("You lose!");
 }
+
+
