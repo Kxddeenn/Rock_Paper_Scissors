@@ -40,29 +40,6 @@ function getComputerChoice(){
 };
 
 
-
-// New function called getHumanChoice
-// Returns valid values (One of the options)
-
-function getHumanChoice(){
-
- let humanChoice = prompt("Please choose Paper, Scissors or Rock");
-    humanChoice = humanChoice.toLowerCase();
-
-    while (1){
-        if (humanChoice !== "rock" && humanChoice !== "paper" && humanChoice !== "scissors"){
-            humanChoice = prompt("Invalid Choice. Enter your pick");
-        }
-        else {
-            break;
-        }
-    }
-
-    return humanChoice;
-
-}
-
-
 // Variables to keep track of score 
 
 let humanScore = 0;
