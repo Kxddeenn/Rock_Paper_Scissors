@@ -69,18 +69,21 @@ function playRound(humanChoice){
         newTies.textContent = `Ties: ${tieCount}`;
         newTies.classList.add("ties");
         tiedContainer.appendChild(newTies);
+
     }
 
     else if ( humanChoice === "scissors" && computerChoice === "rock" || humanChoice === "paper" && computerChoice === "scissors" || humanChoice === "rock" && computerChoice === "paper"){
+        computerScore++;
         console.log(`You lose! ${computerChoice} beats ${humanChoice}`);
         console.log("Human Score:", humanScore, "Computer Score:" , computerScore);
-        computerScore++;
+        
     }
 
     else {
+        humanScore++;
         console.log(`You win! ${humanChoice} beats ${computerChoice}`);
         console.log("Human Score:", humanScore, "Computer Score:" , computerScore);
-        humanScore++;
+        
     }
 
 }
