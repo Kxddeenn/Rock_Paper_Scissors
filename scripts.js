@@ -1,3 +1,22 @@
+// Event List for the Images
+
+function startGame(){
+
+    // Plays game until someone wins
+    let imgs = document.querySelectorAll('img');
+    imgs.forEach(img => {
+        img.addEventListener('click', () => {
+            
+            if(img.id){
+                playRound(img.id);
+            }
+
+        });
+    });
+
+}
+
+
 
 // Create a function that returns strings "rock", "papper", "scissors"
 // Called getComputerChoice
@@ -53,44 +72,33 @@ let computerScore = 0;
 // Will take human and computer player choices as arguments, plays a single round, increments the round winner's score
 // Logs a winner annoucement
 
-function playRound(humanChoice, computerChoice){
+function playRound(humanChoice){
 
-    if( humanChoice == computerChoice){
+    const computerChoice = getComputerChoice();
+    
+    if( humanChoice === computerChoice){
         console.log(`It's a tie! Both selected ${computerChoice}.`);
     }
 
-    else if ( humanChoice == "scissors" && computerChoice == "rock" || humanChoice == "paper" && computerChoice == "scissors" || humanChoice == "rock" && computerChoice == "paper"){
+    else if ( humanChoice === "scissors" && computerChoice === "rock" || humanChoice === "paper" && computerChoice === "scissors" || humanChoice === "rock" && computerChoice === "paper"){
         console.log(`You lose! ${computerChoice} beats ${humanChoice}`);
-        computerScore++;
         console.log("Human Score:", humanScore, "Computer Score:" , computerScore);
+        computerScore++;
     }
 
     else {
         console.log(`You win! ${humanChoice} beats ${computerChoice}`);
-        computerScore++;
         console.log("Human Score:", humanScore, "Computer Score:" , computerScore);
+        humanScore++;
     }
 
 }
 
-// Function called playGame that will call playRound 5 times
-// All the variables will be called within the function
-// Play 5 rounds
+// Reset Game Function
 
-function playGame(){
+function resetGame(){
 
-    const humanSelection = getHumanChoice();
-    const computerSelection = getComputerChoice();
-    playRound(humanSelection, computerSelection);
-
-};
+}
 
 
-// Creating three event Listeners to call PlayRound
-
-const buttons = document.querySelectorAll('button');
-
-buttons.forEach(button => {
-    button.addEventListener('click', playGame);
-});
-
+startGame();
