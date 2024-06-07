@@ -14,7 +14,7 @@ function getComputerChoice(){
     }
     
     else {
-        randomNumber = "papper";
+        randomNumber = "paper";
     }
 
     return randomNumber;
@@ -27,11 +27,11 @@ function getComputerChoice(){
 
 function getHumanChoice(){
 
- let humanChoice = prompt("Please choose Papper, Scissors or Rock");
+ let humanChoice = prompt("Please choose Paper, Scissors or Rock");
     humanChoice = humanChoice.toLowerCase();
 
     while (1){
-        if (humanChoice !== "rock" && humanChoice !== "papper" && humanChoice !== "scissors"){
+        if (humanChoice !== "rock" && humanChoice !== "paper" && humanChoice !== "scissors"){
             humanChoice = prompt("Invalid Choice. Enter your pick");
         }
         else {
@@ -59,7 +59,7 @@ function playRound(humanChoice, computerChoice){
         console.log(`It's a tie! Both selected ${computerChoice}.`);
     }
 
-    else if ( humanChoice == "scissors" && computerChoice == "rock" || humanChoice == "papper" && computerChoice == "scissors" || humanChoice == "rock" && computerChoice == "papper"){
+    else if ( humanChoice == "scissors" && computerChoice == "rock" || humanChoice == "paper" && computerChoice == "scissors" || humanChoice == "rock" && computerChoice == "paper"){
         console.log(`You lose! ${computerChoice} beats ${humanChoice}`);
         computerScore++;
         console.log("Human Score:", humanScore, "Computer Score:" , computerScore);
@@ -83,24 +83,14 @@ function playGame(){
     const computerSelection = getComputerChoice();
     playRound(humanSelection, computerSelection);
 
-}
+};
 
 
-for (i = 0 ; i < 5 ; i++){
-playGame();
-}
+// Creating three event Listeners to call PlayRound
 
-if (humanScore > computerScore){
-    console.log("You win!");
-}
+const buttons = document.querySelectorAll('button');
 
-else if (humanScore < computerScore) {
-    console.log("You lose!");
-}
-
-else {
-    console.log("The game is tied! Play again?")
-}
-
-
+buttons.forEach(button => {
+    button.addEventListener('click', playGame);
+});
 
