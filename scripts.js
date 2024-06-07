@@ -1,17 +1,22 @@
 // Event List for the Images
 
 function startGame() {
-  // Plays game until someone wins
-
-  let imgs = document.querySelectorAll("img");
-  imgs.forEach((img) => {
-    img.addEventListener("click", () => {
-      if (img.id) {
-        playRound(img.id);
-      }
+    // Plays game until someone wins
+    let imgs = document.querySelectorAll("img");
+    imgs.forEach((img) => {
+      img.addEventListener("click", () => {
+        if (img.id) {
+          playRound(img.id);
+  
+          // Check if either score is 5 after each round
+          if (humanScore === 5 || computerScore === 5) {
+            // Stop the game immediately
+            resetGame();
+          }
+        }
+      });
     });
-  });
-}
+  }
 
 // Create a function that returns strings "rock", "papper", "scissors"
 // Called getComputerChoice
@@ -89,32 +94,35 @@ function playRound(humanChoice) {
     gameText.textContent = "Computer Wins!";
     gameText.classList.add("game-text");
     tiedContainer.appendChild(gameText);
-
-
-
   } else {
     humanScore++;
 
     const humanContainer = document.querySelector(".playerScore");
 
     if (humanContainer) {
-        humanContainer.textContent = `Score: ${humanScore}`;
+      humanContainer.textContent = `Score: ${humanScore}`;
     } else {
-        const newPlay = document.createElement("h3");
-        newPlay.textContent = `Score: ${humanScore}`;
-        newPlay.classList.add("playerScore");
+      const newPlay = document.createElement("h3");
+      newPlay.textContent = `Score: ${humanScore}`;
+      newPlay.classList.add("playerScore");
     }
 
     const gameText = document.createElement("h2");
     gameText.textContent = "Player Wins!";
     gameText.classList.add("game-text");
     tiedContainer.appendChild(gameText);
-
   }
 }
 
 // Reset Game Function
 
-function resetGame() {}
+function resetGame() {
+    
+    const resetButton = document.querySelector(".reset");
+    resetButton.style.display = "block";
+    humanScore = 0;
+    computerScore = 0;
+    tieCount = 0;
+}
 
 startGame();
