@@ -54,10 +54,10 @@ let tieCount = 0;
 function playRound(humanChoice){
 
     const tiedContainer = document.querySelector(".score");
-    const existingGameTie = tiedContainer.querySelector("h2.game-tie");
+    const existingGameText = tiedContainer.querySelector(".game-text");
 
-    if (existingGameTie){
-        existingGameTie.remove();
+    if (existingGameText){
+        existingGameText.remove();
     }
 
     const computerChoice = getComputerChoice();
@@ -80,10 +80,10 @@ function playRound(humanChoice){
         }
     
         
-        const gameTie = document.createElement('h2');
-        gameTie.textContent = "It was a tie!";
-        gameTie.classList.add("game-tie");
-        tiedContainer.appendChild(gameTie);
+        const gameText = document.createElement('h2');
+        gameText.textContent = "It was a tie!";
+        gameText.classList.add("game-text");
+        tiedContainer.appendChild(gameText);
     }
     
 
@@ -100,6 +100,11 @@ function playRound(humanChoice){
             newComp.textContent = `Score: ${computerScore}`;
             newComp.classList.add("computerScore");
         }
+
+        const gameText = document.createElement('h2');
+        gameText.textContent = "Computer Wins!";
+        gameText.classList.add("game-text");
+        tiedContainer.appendChild(gameText);
     }
 
     else {
