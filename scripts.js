@@ -89,9 +89,17 @@ function playRound(humanChoice){
 
     else if ( humanChoice === "scissors" && computerChoice === "rock" || humanChoice === "paper" && computerChoice === "scissors" || humanChoice === "rock" && computerChoice === "paper"){
         computerScore++;
-        console.log(`You lose! ${computerChoice} beats ${humanChoice}`);
-        console.log("Human Score:", humanScore, "Computer Score:" , computerScore);
         
+        const computerContainer = document.querySelector('.computerScore');
+        
+        if (computerContainer){
+            computerContainer.textContent = `Score: ${computerScore}`;
+        }
+        else {
+            const newComp = document.createElement('h3');
+            newComp.textContent = `Score: ${computerScore}`;
+            newComp.classList.add("computerScore");
+        }
     }
 
     else {
