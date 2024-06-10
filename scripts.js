@@ -1,22 +1,25 @@
 // Event List for the Images
 
 function startGame() {
-    // Plays game until someone wins
-    let imgs = document.querySelectorAll("img");
-    imgs.forEach((img) => {
-      img.addEventListener("click", () => {
-        if (img.id) {
-          playRound(img.id);
-  
-          // Check if either score is 5 after each round
-          if (humanScore === 5 || computerScore === 5) {
-            // Stop the game immediately
-            resetGame();
-          }
-        }
+  const imgs = document.querySelectorAll("img");
+
+  function imgClickHandler() {
+    if (this.id) {
+      playRound(this.id);
+    }
+
+    if (humanScore === 5 || computerScore === 5) {
+      imgs.forEach((img) => {
+        img.removeEventListener("click", imgClickHandler);
       });
-    });
+      playAgain();
+    }
   }
+
+  imgs.forEach((img) => {
+    img.addEventListener("click", imgClickHandler);
+  });
+}
 
 // Create a function that returns strings "rock", "papper", "scissors"
 // Called getComputerChoice
@@ -114,15 +117,31 @@ function playRound(humanChoice) {
   }
 }
 
+function playAgain() {
+  const resetButton = document.querySelector(".reset");
+  resetButton.style.display = "block";
+}
+
 // Reset Game Function
 
 function resetGame() {
-    
-    const resetButton = document.querySelector(".reset");
-    resetButton.style.display = "block";
-    humanScore = 0;
-    computerScore = 0;
-    tieCount = 0;
+  humanScore = 0;
+  computerScore = 0;
+  tieCount = 0;
+
+  const gameTies = document.querySelector(".ties");
+  gameTies.textContent = `Ties: ${tieCount}`;
+
+  const resetButton = document.querySelector(".reset");
+  resetButton.style.display = "none";
+
+  const playerScore = document.querySelector(".playerScore");
+  playerScore.textContent = `Score: ${humanScore}`;
+
+  const compScore = document.querySelector(".computerScore");
+  compScore.textContent = `Score: ${computerScore}`;
+
+  startGame();
 }
 
 startGame();
