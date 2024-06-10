@@ -1,5 +1,8 @@
 // Event List for the Images
 
+
+
+// By far the hardest part of the game
 function startGame() {
   const imgs = document.querySelectorAll("img");
 
@@ -128,6 +131,9 @@ function resetGame() {
   humanScore = 0;
   computerScore = 0;
   tieCount = 0;
+
+  const gameText = document.querySelector(".game-text");
+  gameText.textContent = "";
 
   const gameTies = document.querySelector(".ties");
   gameTies.textContent = `Ties: ${tieCount}`;
