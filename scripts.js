@@ -1,7 +1,5 @@
 // Event List for the Images
 
-
-
 // By far the hardest part of the game
 function startGame() {
   const imgs = document.querySelectorAll("img");
@@ -79,6 +77,17 @@ function playRound(humanChoice) {
     gameText.textContent = "It was a tie!";
     gameText.classList.add("game-text");
     tiedContainer.appendChild(gameText);
+
+    const capitalizeHuman =
+      humanChoice.charAt(0).toUpperCase() + humanChoice.slice(1);
+    const capitalizeComputer =
+      computerChoice.charAt(0).toUpperCase() + computerChoice.slice(1);
+
+    const playerPick = document.querySelector(".playerChoice");
+    playerPick.textContent = `Player Choice:  ${capitalizeHuman}`;
+
+    const computerPick = document.querySelector(".computerChoice");
+    computerPick.textContent = `Computer Choice:  ${capitalizeComputer}`;
   } else if (
     (humanChoice === "scissors" && computerChoice === "rock") ||
     (humanChoice === "paper" && computerChoice === "scissors") ||
@@ -100,6 +109,17 @@ function playRound(humanChoice) {
     gameText.textContent = "Computer Wins!";
     gameText.classList.add("game-text");
     tiedContainer.appendChild(gameText);
+
+    const capitalizeHuman =
+      humanChoice.charAt(0).toUpperCase() + humanChoice.slice(1);
+    const capitalizeComputer =
+      computerChoice.charAt(0).toUpperCase() + computerChoice.slice(1);
+
+    const playerPick = document.querySelector(".playerChoice");
+    playerPick.textContent = `Player Choice:  ${capitalizeHuman}`;
+
+    const computerPick = document.querySelector(".computerChoice");
+    computerPick.textContent = `Computer Choice:  ${capitalizeComputer}`;
   } else {
     humanScore++;
 
@@ -117,6 +137,17 @@ function playRound(humanChoice) {
     gameText.textContent = "Player Wins!";
     gameText.classList.add("game-text");
     tiedContainer.appendChild(gameText);
+
+    const capitalizeHuman =
+      humanChoice.charAt(0).toUpperCase() + humanChoice.slice(1);
+    const capitalizeComputer =
+      computerChoice.charAt(0).toUpperCase() + computerChoice.slice(1);
+
+    const playerPick = document.querySelector(".playerChoice");
+    playerPick.textContent = `Player Choice:  ${capitalizeHuman}`;
+
+    const computerPick = document.querySelector(".computerChoice");
+    computerPick.textContent = `Computer Choice:  ${capitalizeComputer}`;
   }
 }
 
